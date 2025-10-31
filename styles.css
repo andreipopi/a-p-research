@@ -51,6 +51,16 @@ body {
     box-shadow: 0 12px 40px rgba(0,0,0,0.1);
   }
 
+.glasslevel2{
+    position: relative;                   /* helps Safari */
+    padding: 28px;
+    border-radius: 16px;
+    background: transparent;  /* ~50% white */
+    /* -webkit-backdrop-filter: blur(1px) saturate(1);
+    backdrop-filter: blur(1px) saturate(1); */
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  }
+
 
 
 /* headings */
@@ -98,7 +108,7 @@ a:hover { text-decoration: underline; }
 }
 
 /* basic lists */
-ul { margin: 0; padding-left: 18px; }
+ul { margin: 0; padding-left: 18px; background: transparent;}
 
 
 
@@ -115,3 +125,47 @@ ul { margin: 0; padding-left: 18px; }
 }
 
 
+
+
+
+.pubs{list-style:none;margin:0;padding:0; background: transparent;}
+
+.pubs li{
+  margin:0 0 .75rem;
+  padding:.6rem .8rem;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  background: transparent;
+  row-gap:.25rem;   /* keep wrap spacing */
+  column-gap:0;     /* remove horizontal gap so commas touch text */
+}
+
+.authors, 
+.title, 
+.venue, 
+.pages, 
+.tag, 
+.year{display:inline}
+
+.authors, 
+.venue, 
+.pages, 
+.tag, 
+.year{font-size:5}
+
+
+.title::after{content:". "}
+.pages::after,
+.venue::after,
+.year::after{content:", "}
+
+/* .year{margin-left:auto;background:#f3f4f6;border-radius:999px;padding:.05rem .45rem;font-size:.85em} */
+.title{font-weight:600}
+
+.authors{color:#374151}
+
+.venue,
+.pages{color:#4b5563}
+
+
+.invitedtag{background:#e2fded;border-radius:6px;padding:.05rem .35rem}
