@@ -11,17 +11,29 @@ html, body { height: 100%; }
 html{
     background: transparent;
 }
-body{
-  background:
-    /* thin 1px grid */
-    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
 
-    #f1f1f1; /* base canvas */
+
+
+body{
+    background:
+    radial-gradient(circle, rgba(0, 0, 0, 0.852) 1px, transparent 1px) 0 0 / 22px 22px,
+    #f7f8fa;
 }
 * { font-family: "Source Serif", "Times New Roman", serif; line-height: 1.2; }
+/* 
+background:
+    radial-gradient(circle, rgba(0, 0, 0, 0.852) 1px, transparent 1px) 0 0 / 22px 22px,
+    #f7f8fa; */
+/* 
+     background:
+    linear-gradient(180deg, rgba(0,0,0,.035) 0 50%, transparent 50% 100%) 0 0/100% 28px,
+    repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 1px, transparent 1px 16px),
+    #f7f8fa; */
 
-
+  /* background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
+    #f1f1f1; */
 
 .center{
   min-height:100vh;
