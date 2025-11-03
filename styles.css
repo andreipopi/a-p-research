@@ -16,8 +16,9 @@ html{
 
 body{
     background:
-    radial-gradient(circle, rgba(0, 0, 0, 0.852) 1px, transparent 1px) 0 0 / 22px 22px,
-    #f7f8fa;
+    linear-gradient(180deg, rgba(0,0,0,.035) 0 50%, transparent 50% 100%) 0 0/100% 28px,
+    repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 1px, transparent 1px 16px),
+    #f7f8fa; 
 }
 * { font-family: "Source Serif", "Times New Roman", serif; line-height: 1.2; }
 /* 
@@ -46,11 +47,11 @@ background:
 
 .glass{
     position: relative;                   /* helps Safari */
-    width: min(860px, 92vw); 
+    width: min(1000px, 92vw); 
     min-height: 40vh;
     padding: 28px;
     border-radius: 16px;
-    background: rgba(255,255,255,0.7);    /* ~50% white */
+    background: rgba(255,255,255,0.4);    /* ~50% white */
     -webkit-backdrop-filter: blur(2px) saturate(0.9);
     backdrop-filter: blur(2px) saturate(0.9);
     background-clip: padding-box;
@@ -164,8 +165,9 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
 
 .title::after{content:". "}
 .pages::after,
-.venue::after,
-.year::after{content:", "}
+.venue::after{content:", "} 
+
+/* .year::after */
 
 /* .year{margin-left:auto;background:#f3f4f6;border-radius:999px;padding:.05rem .45rem;font-size:.85em} */
 .title{font-weight:600}
