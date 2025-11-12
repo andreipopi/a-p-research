@@ -16,9 +16,9 @@ html{
 
 body{
     background:
-    linear-gradient(180deg, rgba(0,0,0,.035) 70% 30%, transparent 50% 100%) 0 0/100% 25px,
-    repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 1px, transparent 1px 16px),
-    #fafcff;
+    linear-gradient(180deg, rgba(0,0,0,.035) 50% 10%, transparent 0% 0%) 0 0/100% 30px,
+    repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 1px, transparent 1px 17px),
+    #ffffff;
 }
 * { font-family: "Source Serif", "Times New Roman", serif; line-height: 1.2; }
 /* 
@@ -56,7 +56,7 @@ p {
     min-height: 40vh;
     padding: 28px;
     border-radius: 16px;
-    background: rgba(255,255,255,0.4);    /* ~50% white */
+    background: rgba(255,255,255,0.7);    /* ~50% white */
     -webkit-backdrop-filter: blur(2px) saturate(0.9);
     backdrop-filter: blur(2px) saturate(0.9);
     background-clip: padding-box;
