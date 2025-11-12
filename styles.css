@@ -16,9 +16,9 @@ html{
 
 body{
     background:
-    linear-gradient(180deg, rgba(0,0,0,.035) 0 50%, transparent 50% 100%) 0 0/100% 28px,
+    linear-gradient(180deg, rgba(0,0,0,.035) 70% 30%, transparent 50% 100%) 0 0/100% 25px,
     repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 1px, transparent 1px 16px),
-    #f7f8fa; 
+    #fafcff;
 }
 * { font-family: "Source Serif", "Times New Roman", serif; line-height: 1.2; }
 /* 
@@ -35,6 +35,11 @@ background:
     linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
     #f1f1f1; */
+
+
+p {
+  text-align: justify;
+}
 
 .center{
   min-height:100vh;
@@ -77,14 +82,14 @@ h1 {
   margin: 0 0 6px;
   font-size: clamp(2.2rem, 6vw, 3rem);
   font-weight: 900;
-  color: #11519e;            /* black name */
+  color: #0c3b75;            /* black name */
 }
 /* subtitle with a line that starts after the text */
 h2 {
   margin: 0 0 12px;          /* space below subtitle */
   font-size: 1.1rem;
   font-weight: 800;
-  color: #11519e;
+  color: #0c3b75;
   background: none;          /* remove black bar */
   display: flex;             /* put text and line on one row */
   align-items: center;       /* line sits at vertical center of text */
@@ -136,7 +141,6 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
 
 
 
-
 .pubs{list-style:none;margin:0;padding:0; background: transparent;}
 
 .pubs li{
@@ -163,9 +167,7 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
 .year{font-size:5}
 
 
-.title::after{content:". "}
-.pages::after,
-.venue::after{content:", "} 
+
 
 /* .year::after */
 
@@ -196,7 +198,6 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
 .pubs-plain .invitedtag,
 .pubs-plain .year { display: inline; font-size: 1rem; }
 /* punctuation */
-.pubs-plain .title::after { content: ". "; }
 
 /* tiny emphasis (optional) */
 .pubs-plain .title { font-weight: 600; }
