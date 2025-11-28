@@ -42,12 +42,15 @@ p {
 }
 
 .center{
-  min-height:100vh;
+  /* min-height:100vh; */
   display:grid;
   background: transparent;
-  place-items:center;
-  padding:12px;          /* leaves visible grid gutters */
+  /* place-items:center; */
+  justify-items:center;  /* horizontal center */
+
+  padding:12px;      
 }
+
 
 
 .glass{
@@ -56,7 +59,23 @@ p {
     min-height: 40vh;
     padding: 28px;
     border-radius: 16px;
-    background: rgba(255,255,255,0.3);    /* ~50% white */
+    background: rgba(255,255,255,0.1);    /* ~50% white */
+    -webkit-backdrop-filter: blur(2px) saturate(0.9);
+    backdrop-filter: blur(2px) saturate(0.9);
+    background-clip: padding-box;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,.10);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  }
+  .homeglass{
+    position: relative;                   /* helps Safari */
+    width: min(1000px, 92vw); 
+    padding-top: 20px;
+    padding-bottom: 8px;
+    padding-left: 28px;
+    margin-bottom: 15px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.1);    /* ~50% white */
     -webkit-backdrop-filter: blur(2px) saturate(0.9);
     backdrop-filter: blur(2px) saturate(0.9);
     background-clip: padding-box;
@@ -183,9 +202,6 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
 .invitedtag{background:#e2fded;border-radius:6px;padding:.05rem .35rem}
 .submittedtag{background:#ffaf2f22;border-radius:6px;padding:.05rem .35rem}
 
-
-
-
 /* default list look (bullets, left padding) */
 .pubs-plain { margin: 0; padding-left: 18px; }
 /* kill inter-span whitespace so commas touch text cleanly */
@@ -203,3 +219,177 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
 .pubs-plain .title { font-weight: 600; }
 .pubs-plain .authors { color: #374151; }
 .pubs-plain .venue, .pubs-plain .pages { color: #4b5563; }
+.nav-buttons {
+  position: absolute;
+  top: 50px;
+  right: 50px;          /* default: mobile / smaller screens */
+  display: flex;
+  flex-direction: row;  /* mobile: side by side */
+  gap: 8px;
+  z-index: 1000;        /* above everything */
+}
+
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0c3b75;
+
+  background: rgba(255,255,255,0.1);  /* glass effect */
+  border: 1px solid rgba(0,0,0,0.08);
+  -webkit-backdrop-filter: blur(2px) saturate(0.9);
+  backdrop-filter: blur(2px) saturate(0.9);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.nav-btn:hover {
+  background: rgba(255,255,255,0.9);
+  text-decoration: none;
+}
+
+/* Desktop: to the right of the glass, stacked, a bit lower */
+@media (min-width: 1000px) {
+  .nav-buttons {
+    position:absolute;
+    top: 50px;                     /* tweak this up/down to taste */
+    flex-direction: column;        /* one under another */
+    right: auto;
+    /* left: calc(50% + 500px + 16px); */
+    left: calc(50% + 11cm);/* 16px to the right of 1000px-wide glass */
+
+  }
+}
+
+
+
+.triangle-btn {
+  width: 50px;
+  height: 50px;
+
+  /* glass look */
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(2px) saturate(0.9);
+  backdrop-filter: blur(2px) saturate(0.9);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.08);
+
+  /* triangle shape pointing up */
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+
+}
+
+/* small hover tweak if you like */
+.triangle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+/*DARK THEME ---------------*/
+
+/* slightly lighter link blue in dark mode */
+html.dark {
+  --blue: #93c5fd;
+}
+
+/* main background + base text color */
+html.dark body {
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px) 0 0 / 22px 22px,
+    #020617;
+  color: #e5e7eb;
+}
+
+/* headings */
+html.dark h1,
+html.dark h2,
+html.dark h3 {
+  color: #e5edff;
+}
+
+html.dark h2::after {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* generic links */
+html.dark a,
+html.dark .email a {
+  color: var(--blue);
+}
+
+html.dark a:hover,
+html.dark .email a:hover {
+  text-decoration: underline;
+}
+
+/* info block under the name */
+html.dark .info li,
+html.dark .info a {
+  color: #e5e7eb;
+}
+
+/* main glass panels */
+html.dark .glass,
+html.dark .homeglass {
+  border-color: rgba(148, 163, 184, 0.5);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8);
+}
+
+/* inner glass cards for publications */
+html.dark .glasslevel2 {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* publication cards */
+html.dark .pubs li {
+  border-color: rgba(148, 163, 184, 0.55);
+}
+
+/* publication text colors */
+html.dark .authors {
+  color: #e5e7eb;
+}
+
+html.dark .venue,
+html.dark .pages {
+  color: #cbd5f5;
+}
+
+/* tags */
+html.dark .invitedtag {
+  background: rgba(34, 197, 94, 0.18);
+}
+
+html.dark .submittedtag {
+  background: rgba(249, 115, 22, 0.2);
+}
+
+/* nav buttons (including your theme toggle, CV, Research) */
+html.dark .nav-btn {
+  color: #e5e7eb;
+  background: rgba(15, 23, 42, 0.2);
+  border-color: rgba(148, 163, 184, 0.6);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.85);
+}
+
+html.dark .nav-btn:hover {
+  background: rgba(38, 45, 70, 0.9);
+  text-decoration: none;
+}
+
+/* triangle button if you ever use it */
+html.dark .triangle-btn {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: rgba(148, 163, 184, 0.6);
+}
+
+
+
+/*END DARK THEME ---------------*/
