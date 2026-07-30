@@ -1,5 +1,7 @@
 /* minimal, no extras */
-:root { --blue:#002a59; 
+:root { --blue:#002a59;
+  --panel-radius: 16px;
+  --profile-size: 175px;
 
   --grid: 28px;                         /* square size */
   --grid-line: rgba(0, 0, 0, 0.2);         /* thin lines */
@@ -47,6 +49,7 @@ p {
   background: transparent;
   /* place-items:center; */
   justify-items:center;  /* horizontal center */
+  row-gap:15px;
 
   padding:12px;      
 }
@@ -58,7 +61,7 @@ p {
     width: min(1000px, 92vw); 
     min-height: 40vh;
     padding: 28px;
-    border-radius: 16px;
+    border-radius: var(--panel-radius);
     background: rgba(255,255,255,0.1);    /* ~50% white */
     -webkit-backdrop-filter: blur(2px) saturate(0.9);
     backdrop-filter: blur(2px) saturate(0.9);
@@ -67,27 +70,82 @@ p {
     border: 1px solid rgba(0,0,0,.10);
     box-shadow: 0 12px 40px rgba(0,0,0,0.1);
   }
-  .homeglass{
-    position: relative;                   /* helps Safari */
-    width: min(1000px, 92vw); 
-    padding-top: 20px;
-    padding-bottom: 8px;
-    padding-left: 28px;
-    margin-bottom: 15px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.1);    /* ~50% white */
+
+.homeglass{
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--profile-size) 1fr;
+    align-items: center;
+    gap: 36px;
+    width: min(1000px, 92vw);
+    padding: 28px;
+    border-radius: var(--panel-radius);
+    background: rgba(255, 255, 255, 0.1);
     -webkit-backdrop-filter: blur(2px) saturate(0.9);
     backdrop-filter: blur(2px) saturate(0.9);
     background-clip: padding-box;
     overflow: hidden;
     border: 1px solid rgba(0,0,0,.10);
     box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-  }
+}
+
+.profile-media {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+
+.profile-photo {
+  width: var(--profile-size);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--panel-radius);
+  clip-path: url(#profile-shape);
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 38%;
+  transform: scale(1.4);
+}
+
+.profile-copy { align-self: start; }
+
+.profile-bio {
+  max-width: 520px;
+  margin: 14px 0 0;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.thesis-overview {
+  display: grid;
+  grid-template-columns: 13fr 7fr;
+  align-items: start;
+  gap: 28px;
+}
+
+.thesis-overview-text p:first-child {
+  margin-top: 0;
+}
+
+.thesis-figure {
+  margin: 0;
+}
+
+.thesis-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
 
 .glasslevel2{
     position: relative;                   /* helps Safari */
     padding: 28px;
-    border-radius: 16px;
+    border-radius: var(--panel-radius);
     background: transparent;  /* ~50% white */
     /* -webkit-backdrop-filter: blur(1px) saturate(1);
     backdrop-filter: blur(1px) saturate(1); */
@@ -99,6 +157,7 @@ p {
 /* headings */
 h1 {
   margin: 0 0 6px;
+  line-height: 1;
   font-size: clamp(2.2rem, 6vw, 3rem);
   font-weight: 900;
   color: #0c3b75;            /* black name */
@@ -145,16 +204,29 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
 
 
 
-/* compact icon list under the name */
+/* compact icon list under the photo */
 
-.info{list-style:none;margin:8px 0 18px;padding:0;display:grid;gap:8px}
-.info li,.info a{display:flex;align-items:center;gap:10px;text-decoration:none;color:#2a2f36;font-weight:600}
+.info{list-style:none;margin:0;padding:0;display:flex;align-items:center;justify-content:center;gap:16px}
+.info li,.info a{display:flex;align-items:center;justify-content:center;text-decoration:none;color:#2a2f36}
 .info a:hover{color:var(--blue)}
 .info i{
-    font-size:18px;
+    font-size:22px;
     line-height:1;
-    width: 18px;
+    width: 22px;
     text-align:center;
+}
+
+.info img { width: 22px; height: 22px; border-radius: 4px; }
+
+@media (max-width: 650px) {
+  .homeglass {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .profile-photo { max-width: 100%; }
+  .profile-copy { text-align: center; }
+  .thesis-overview { grid-template-columns: 1fr; }
 }
 
 
@@ -221,12 +293,11 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
 .pubs-plain .venue, .pubs-plain .pages { color: #4b5563; }
 .nav-buttons {
   position: absolute;
-  top: 50px;
-  right: 50px;          /* default: mobile / smaller screens */
+  top: 28px;
+  right: 28px;
   display: flex;
-  flex-direction: row;  /* mobile: side by side */
   gap: 8px;
-  z-index: 1000;        /* above everything */
+  z-index: 1;
 }
 
 
@@ -252,21 +323,6 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
   background: rgba(255,255,255,0.9);
   text-decoration: none;
 }
-
-/* Desktop: to the right of the glass, stacked, a bit lower */
-@media (min-width: 1000px) {
-  .nav-buttons {
-    position:absolute;
-    top: 50px;                     /* tweak this up/down to taste */
-    flex-direction: column;        /* one under another */
-    right: auto;
-    /* left: calc(50% + 500px + 16px); */
-    left: calc(50% + 11cm);/* 16px to the right of 1000px-wide glass */
-
-  }
-}
-
-
 
 .triangle-btn {
   width: 50px;
