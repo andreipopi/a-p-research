@@ -127,7 +127,7 @@ p {
   gap: 28px;
 }
 
-.thesis-overview-text p:first-child {
+.thesis-overview-text h3:first-child {
   margin-top: 0;
 }
 
