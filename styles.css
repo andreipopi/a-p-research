@@ -3,8 +3,8 @@
   --panel-radius: 16px;
   --profile-size: 175px;
 
-  --grid: 28px;                         /* square size */
-  --grid-line: rgba(0, 0, 0, 0.2);         /* thin lines */
+  --grid: 28px;
+  --grid-line: rgba(15, 23, 42, 0.04);
 }
 
 * { box-sizing: border-box; }
@@ -17,26 +17,25 @@ html{
 
 
 body{
-    background:
-        radial-gradient(circle, rgba(0, 0, 0, 0.15) 1px, transparent 1px) 0 0 / 22px 22px,
-
-    #ffffff;
-}
-* { font-family: "Source Serif", "Times New Roman", serif; line-height: 1.2; }
-/* 
-background:
-    radial-gradient(circle, rgba(0, 0, 0, 0.852) 1px, transparent 1px) 0 0 / 22px 22px,
-    #f7f8fa; */
-/* 
-     background:
-    linear-gradient(180deg, rgba(0,0,0,.035) 0 50%, transparent 50% 100%) 0 0/100% 28px,
-    repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 1px, transparent 1px 16px),
-    #f7f8fa; */
-
-  /* background:
+  background:
     linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
-    #f1f1f1; */
+    #f8fafc;
+}
+* { font-family: "Source Serif", "Times New Roman", serif; line-height: 1.2; }
+
+/* Alternative dotted background:
+  background:
+    radial-gradient(circle, rgba(0, 0, 0, 0.15) 1px, transparent 1px) 0 0 / 22px 22px,
+    #ffffff;
+*/
+
+/* Alternative lined background:
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.035) 0 50%, transparent 50% 100%) 0 0/100% 28px,
+    repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 1px, transparent 1px 16px),
+    #f7f8fa;
+*/
 
 
 p {
@@ -99,7 +98,11 @@ p {
   width: var(--profile-size);
   aspect-ratio: 1;
   overflow: hidden;
+  display: block;
+  padding: 0;
+  border: 0;
   border-radius: var(--panel-radius);
+  background: transparent;
   clip-path: url(#profile-shape);
 }
 
@@ -161,6 +164,27 @@ h1 {
   font-size: clamp(2.2rem, 6vw, 3rem);
   font-weight: 900;
   color: #0c3b75;            /* black name */
+}
+
+.home-trigger {
+  cursor: pointer;
+}
+
+.home-name {
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+}
+
+.home-name:hover {
+  text-decoration: none;
+}
+
+.home-trigger:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 4px;
 }
 /* subtitle with a line that starts after the text */
 h2 {
@@ -296,6 +320,7 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
   top: 28px;
   right: 28px;
   display: flex;
+  flex-direction: column;
   gap: 8px;
   z-index: 1;
 }
@@ -317,11 +342,40 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
   -webkit-backdrop-filter: blur(2px) saturate(0.9);
   backdrop-filter: blur(2px) saturate(0.9);
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  cursor: pointer;
 }
 
 .nav-btn:hover {
   background: rgba(255,255,255,0.9);
   text-decoration: none;
+}
+
+.bio-panel {
+  min-height: 0;
+}
+
+.bio-panel p,
+.bio-panel li {
+  line-height: 1.5;
+}
+
+.bio-panel h3 {
+  margin-top: 24px;
+}
+
+.bio-panel ul {
+  margin-top: 8px;
+}
+
+.bio-panel li + li {
+  margin-top: 6px;
+}
+
+.bio-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  text-align: left;
 }
 
 .triangle-btn {
@@ -353,12 +407,14 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
 /* slightly lighter link blue in dark mode */
 html.dark {
   --blue: #93c5fd;
+  --grid-line: rgba(148, 163, 184, 0.06);
 }
 
 /* main background + base text color */
 html.dark body {
   background:
-    radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px) 0 0 / 22px 22px,
+    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
     #020617;
   color: #e5e7eb;
 }
