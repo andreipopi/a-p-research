@@ -4,20 +4,31 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Andrei Popescu</title>
-  <meta name="robots" content="noindex, nofollow" />
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=6" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;600;700&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;600;700&amp;family=IBM+Plex+Sans:wght@400;600&amp;display=swap" rel="stylesheet" />
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const root = document.documentElement;
       const themeBtn = document.getElementById('theme-toggle');
+      const researchBtn = document.getElementById('research-toggle');
       const bioBtn = document.getElementById('bio-toggle');
       const bioPanel = document.getElementById('bio-panel');
+      const siteNav = document.querySelector('.site-nav');
       const homeTriggers = document.querySelectorAll('[data-home-trigger]');
+      const researchPanels = document.querySelectorAll('[data-research-panel]');
+
+      if (siteNav) {
+        const updateNavigationSize = function () {
+          siteNav.classList.toggle('is-compact', window.scrollY > 24);
+        };
+
+        updateNavigationSize();
+        window.addEventListener('scroll', updateNavigationSize, { passive: true });
+      }
 
       if (themeBtn) {
         themeBtn.addEventListener('click', function () {
@@ -26,15 +37,31 @@
       }
 
       if (bioBtn && bioPanel) {
-        bioBtn.addEventListener('click', function () {
+        const showResearch = function () {
+          bioPanel.hidden = true;
+          researchPanels.forEach(function (panel) {
+            panel.hidden = false;
+          });
+          bioBtn.setAttribute('aria-expanded', 'false');
+          if (researchBtn) researchBtn.setAttribute('aria-pressed', 'true');
+        };
+
+        const showBio = function () {
           bioPanel.hidden = false;
+          researchPanels.forEach(function (panel) {
+            panel.hidden = true;
+          });
           bioBtn.setAttribute('aria-expanded', 'true');
+          if (researchBtn) researchBtn.setAttribute('aria-pressed', 'false');
+        };
+
+        bioBtn.addEventListener('click', function () {
+          showBio();
         });
 
         homeTriggers.forEach(function (trigger) {
           trigger.addEventListener('click', function () {
-            bioPanel.hidden = true;
-            bioBtn.setAttribute('aria-expanded', 'false');
+            showResearch();
           });
         });
       }
@@ -52,6 +79,35 @@
   </svg>
 
   <main class="center">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <button
+        class="nav-btn"
+        id="research-toggle"
+        type="button"
+        aria-pressed="true"
+        data-home-trigger
+      >
+        Research
+      </button>
+      <button
+        class="nav-btn"
+        id="bio-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="bio-panel"
+      >
+        Bio
+      </button>
+      <button
+        class="nav-btn theme-toggle"
+        id="theme-toggle"
+        type="button"
+        aria-label="Toggle dark mode"
+      >
+        <i class="fa-regular fa-moon" aria-hidden="true"></i>
+      </button>
+    </nav>
+
     <div class="homeglass">
       <div class="profile-media">
         <button class="profile-photo home-trigger" type="button" data-home-trigger aria-label="Home">
@@ -91,29 +147,10 @@
       <div class="profile-copy">
         <h1><button class="home-trigger home-name" type="button" data-home-trigger>Andrei Popescu</button></h1>
         <p class="profile-bio">
-          I’m an AI researcher who recently received a PhD in Computer Science with distinction from Graz University of Technology. My doctoral work focused on decomposition-based algorithms for exact reasoning in structured and probabilistic argumentation. Currently, I am exploring how formal reasoning and algorithmic methods can improve the reliability, verifiability, and long-context reasoning of language models.
+          I’m an AI researcher who recently received a PhD in Computer Science with distinction from Graz University of Technology. My doctoral work focused on decomposition-based algorithms for exact reasoning in structured and probabilistic argumentation. My current work focuses on fine-tuning language models for exact reasoning tasks, including argumentative reasoning.
         </p>
       </div>
 
-      <div class="nav-buttons">
-        <button
-          class="nav-btn theme-toggle"
-          id="theme-toggle"
-          type="button"
-          aria-label="Toggle dark mode"
-        >
-          <i class="fa-regular fa-moon" aria-hidden="true"></i>
-        </button>
-        <button
-          class="nav-btn"
-          id="bio-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="bio-panel"
-        >
-          Bio
-        </button>
-      </div>
     </div>
 
     <div class="glass bio-panel" id="bio-panel" hidden>
@@ -121,7 +158,7 @@
         <h2>Andrei Popescu</h2>
 
         <p>
-          I’m an AI researcher interested in developing algorithms that improve the reasoning capabilities of language models. My research so far has focused on computational argumentation and algorithms for formal reasoning, particularly on exploiting structural properties to make complex reasoning tasks more tractable via decomposition-based algorithms on tree decompositions.
+          My research background spans knowledge representation, formal reasoning, and algorithm design. I am now applying this experience to the fine-tuning and evaluation of language models on exact reasoning tasks.
         </p>
 
         <p class="bio-links">
@@ -151,6 +188,33 @@
 
       </section>
     </div>
+
+    <!-- Current Research section temporarily hidden.
+    <div class="glass current-research" data-research-panel>
+      <section class="sub">
+        <h2>Current Research</h2>
+
+        <article class="research-project">
+          <h3>Fine-tuning language models for exact reasoning</h3>
+          <p>
+            I am fine-tuning open-weight language models on exact reasoning tasks in probabilistic argumentation.
+          </p>
+          <p>
+            The project includes datasets generated from argumentation problems and exact solver outputs, enabling controlled comparisons with base models and probabilistic baselines.
+          </p>
+        </article>
+      </section>
+    </div>
+    -->
+
+    <!-- Future research direction:
+    <article class="research-project">
+      <h3>Decomposition-aware long-context reasoning</h3>
+      <p>
+        Exploring whether structurally informed representations can support more reliable and efficient reasoning over long contexts.
+      </p>
+    </article>
+    -->
 
     <!-- Doctoral Thesis section temporarily hidden. -->
     <div class="glass" hidden>
@@ -246,43 +310,68 @@
     -->
     </div>
 
-    <div class="glass">
+    <div class="glass publications-panel" data-research-panel>
       <section class="sub">
         <h2>Selected Publications</h2>
         <ul class="pubs">
-          <li class="glasslevel2">
-            <span class="authors">Andrei Popescu and Johannes Peter Wallner. 2025. </span>
-            <a href="https://gitlab.tugraz.at/krr/aba-completion/-/blob/main/paper_with_appendix.pdf?ref_type=heads" target="_blank" rel="noopener">
-              <span class="title">Completing Structured Arguments in Assumption-Based Argumentation. </span>
-            </a>
-            <span class="venue"><em>In Proc. JELIA 2025, Part I, 16093:95–111.</em></span>
+          <li class="pub-item">
+            <p class="pub-citation">
+              <span class="authors">Andrei Popescu and Johannes Peter Wallner. 2025.</span>
+              <span class="title"> Completing Structured Arguments in Assumption-Based Argumentation. </span>
+              <span class="venue"><em>In Proc. JELIA 2025, Part I, 16093:95–111.</em></span>
+            </p>
+            <p class="pub-summary">A declarative approach to completing partial structured arguments in assumption-based argumentation.</p>
+            <p class="pub-links">
+              <a href="https://gitlab.tugraz.at/krr/aba-completion/-/blob/main/paper_with_appendix.pdf?ref_type=heads" target="_blank" rel="noopener">Paper</a>
+              <span aria-hidden="true">·</span>
+              <a href="https://gitlab.tugraz.at/krr/aba-completion" target="_blank" rel="noopener">Code</a>
+            </p>
           </li>
 
-          <li class="glasslevel2">
-            <span class="authors">Andrei Popescu and Johannes Peter Wallner. 2025. </span>
-            <a href="https://dl.acm.org/doi/10.1145/3672608.3707819" target="_blank" rel="noopener">
-              <span class="title">Dynamic Programming Algorithms for Probabilistic Bipolar Argumentation Frameworks. </span>
-            </a>
-            <span class="venue"><em>In Proc. SAC 2025, 1051–1052.</em></span>
+          <li class="pub-item">
+            <p class="pub-citation">
+              <span class="authors">Andrei Popescu and Johannes Peter Wallner. 2025.</span>
+              <span class="title"> Dynamic Programming Algorithms for Probabilistic Bipolar Argumentation Frameworks. </span>
+              <span class="venue"><em>In Proc. SAC 2025, 1051–1052.</em></span>
+            </p>
+            <p class="pub-summary">Dynamic-programming algorithms for reasoning in probabilistic bipolar argumentation frameworks.</p>
+            <p class="pub-links">
+              <a href="https://dl.acm.org/doi/10.1145/3672608.3707819" target="_blank" rel="noopener">Paper</a>
+              <span aria-hidden="true">·</span>
+              <a href="https://gitlab.tugraz.at/krr/pbaf-td" target="_blank" rel="noopener">Code</a>
+            </p>
           </li>
 
-          <li class="glasslevel2">
-            <span class="authors">Andrei Popescu and Johannes Peter Wallner. 2024. </span>
-            <a href="https://proceedings.kr.org/2024/55/kr2024-0055-popescu-et-al.pdf" target="_blank" rel="noopener">
-              <span class="title">Advancing Algorithmic Approaches to Probabilistic Argumentation under the Constellation Approach. </span>
-            </a>
-            <span class="venue"><em>In Proc. KR 2024, 585–596.</em></span>
+          <li class="pub-item">
+            <p class="pub-citation">
+              <span class="authors">Andrei Popescu and Johannes Peter Wallner. 2024.</span>
+              <span class="title"> Advancing Algorithmic Approaches to Probabilistic Argumentation under the Constellation Approach. </span>
+              <span class="venue"><em>In Proc. KR 2024, 585–596.</em></span>
+            </p>
+            <p class="pub-summary">Tree-decomposition-based algorithms that exploit graph structure in probabilistic argumentation.</p>
+            <p class="pub-links">
+              <a href="https://proceedings.kr.org/2024/55/kr2024-0055-popescu-et-al.pdf" target="_blank" rel="noopener">Paper</a>
+              <span aria-hidden="true">·</span>
+              <a href="https://gitlab.tugraz.at/krr/paf-td" target="_blank" rel="noopener">Code</a>
+            </p>
           </li>
 
-          <li class="glasslevel2">
-            <span class="authors">Andrei Popescu and Johannes Peter Wallner. 2023. </span>
-            <a href="https://link.springer.com/chapter/10.1007/978-3-031-43619-2_14" target="_blank" rel="noopener">
-              <span class="title">Reasoning in Assumption-Based Argumentation Using Tree-Decompositions. </span>
-            </a>
-            <span class="venue"><em>In Proc. JELIA 2023, 14281:192–208.</em></span>
+          <li class="pub-item">
+            <p class="pub-citation">
+              <span class="authors">Andrei Popescu and Johannes Peter Wallner. 2023.</span>
+              <span class="title"> Reasoning in Assumption-Based Argumentation Using Tree-Decompositions. </span>
+              <span class="venue"><em>In Proc. JELIA 2023, 14281:192–208.</em></span>
+            </p>
+            <p class="pub-summary">Tree-decomposition-based algorithms for reasoning in assumption-based argumentation.</p>
+            <p class="pub-links">
+              <a href="https://link.springer.com/chapter/10.1007/978-3-031-43619-2_14" target="_blank" rel="noopener">Paper</a>
+              <span aria-hidden="true">·</span>
+              <a href="https://gitlab.tugraz.at/krr/astra" target="_blank" rel="noopener">Code</a>
+            </p>
           </li>
 
-          <li class="glasslevel2">
+          <!-- Additional publication, currently omitted from the selected list.
+          <li class="pub-item">
             <span class="invitedtag">Invited</span>
             <span class="authors">Iosif Apostolakis, Andrei Popescu, and Johannes Peter Wallner. 2025. </span>
             <a href="https://hal.science/hal-05339535v1/file/ArgApp2025_Proceedings.pdf" target="_blank" rel="noopener">
@@ -290,8 +379,10 @@
             </a>
             <span class="venue"><em>In Proc. Arg&amp;App.</em></span>
           </li>
+          -->
 
-          <li class="glasslevel2">
+          <!-- Doctoral-consortium paper, currently omitted from the selected list.
+          <li class="pub-item">
             <span class="invitedtag">D.C.</span>
             <span class="authors">Andrei Popescu. 2024. </span>
             <a href="https://gitlab.tugraz.at/krr/paf-td/-/blob/main/doctoral-consortium/Doctoral_Consortium_KR.pdf?ref_type=heads" target="_blank" rel="noopener">
@@ -299,36 +390,55 @@
             </a>
             <span class="venue"><em>D.C. of KR 2024.</em></span>
           </li>
+          -->
 
-          <li class="glasslevel2">
-            <span class="authors">Andrei Popescu, Seda Polat Erdeniz, Alexander Felfernig, Mathias Uta, Müslüm Atas, Viet-Man Le, Klaus Pilsl, Martin Enzelsberger, and Thi Ngoc Trang Tran. 2022.</span>
-            <span class="title">An overview of machine learning techniques in constraint solving. </span>
-            <span class="venue"><em>J. Intell. Inf. Syst.</em> 58(1)</span>,
-            <span class="pages">91–118. </span>
+          <li class="pub-item">
+            <p class="pub-citation">
+              <span class="authors">Andrei Popescu, Seda Polat Erdeniz, Alexander Felfernig, Mathias Uta, Müslüm Atas, Viet-Man Le, Klaus Pilsl, Martin Enzelsberger, and Thi Ngoc Trang Tran. 2022.</span>
+              <span class="title"> An overview of machine learning techniques in constraint solving. </span>
+              <span class="venue"><em>J. Intell. Inf. Syst. 58(1), 91–118.</em></span>
+            </p>
+            <p class="pub-summary">A survey of machine-learning techniques for improving constraint solving.</p>
+            <p class="pub-links">
+              <a href="https://link.springer.com/article/10.1007/s10844-021-00666-5" target="_blank" rel="noopener">Paper</a>
+            </p>
           </li>
 
-          <li class="glasslevel2">
-            <span class="authors">Alexander Felfernig, Viet Man Le, Andrei Popescu, Mathias Uta, Thi Ngoc Trang Tran, and Müslüm Atas. 2021. </span>
-            <span class="title">An Overview of Recommender Systems and Machine Learning in Feature Modeling and Configuration. </span>
-            <span class="venue"><em>VaMoS 2021, </em></span>
-            <span class="pages">16:1–16:8</span>.
+          <li class="pub-item">
+            <p class="pub-citation">
+              <span class="authors">Alexander Felfernig, Viet-Man Le, Andrei Popescu, Mathias Uta, Thi Ngoc Trang Tran, and Müslüm Atas. 2021.</span>
+              <span class="title"> An Overview of Recommender Systems and Machine Learning in Feature Modeling and Configuration. </span>
+              <span class="venue"><em>VaMoS 2021, 16:1–16:8.</em></span>
+            </p>
+            <p class="pub-summary">An overview of how recommender systems and machine learning can support feature-model configuration.</p>
+            <p class="pub-links">
+              <a href="https://dl.acm.org/doi/10.1145/3442391.3442408" target="_blank" rel="noopener">Paper</a>
+            </p>
           </li>
 
-          <li class="glasslevel2">
+          <!-- Master’s-thesis publication, currently omitted from the selected list.
+          <li class="pub-item">
             <span class="invitedtag">Master Thesis</span>
             <span class="authors">Andrei Popescu and Pinar Yolum. 2019. </span>
             <span class="title">PARCo: A Knowledge-Based Agent for Context-Sensitive Reasoning and Decision-Making Regarding Privacy</span>.
             <span class="venue"><em>In Proc. BNAIC/BENELEARN 2019</em></span>.
           </li>
+          -->
 
-          <li class="glasslevel2">
+          <!-- Bachelor’s-thesis publication, currently omitted from the selected list.
+          <li class="pub-item">
             <span class="invitedtag">Bachelor Thesis</span>
             <span class="authors">Alice Schweigkofler, Gabriele Pasetti Monizza, Erdal Domi, Andrei Popescu, Julia Ratajczak, Carmen Marcher, Michael Riedl, and Dominik T. Matt. 2018.</span>
             <span class="title">Development of a Digital Platform Based on the Integration of Augmented Reality and BIM for the Management of Information in Construction Processes</span>.
             <span class="venue"><em>In Proc. PLM 2018</em></span>,
             <span class="pages">46–55</span>.
           </li>
+          -->
         </ul>
+
+        <p class="all-publications">
+          <a href="https://dblp.org/pid/231/4051" target="_blank" rel="noopener">All publications</a>
+        </p>
       </section>
     </div>
   </main>
