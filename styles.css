@@ -114,8 +114,8 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 38%;
-  transform: scale(1.4);
+  object-position: center;
+  transform: none;
 }
 
 .profile-copy { align-self: start; }
