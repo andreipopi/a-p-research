@@ -103,7 +103,7 @@ p {
   padding: 0;
   border: 0;
   border-radius: 50%;
-  background: transparent;
+  background: #f4f3f8;
   /* Custom portrait shape, temporarily disabled:
   border-radius: var(--panel-radius);
   clip-path: url(#profile-shape);
@@ -115,7 +115,7 @@ p {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transform: none;
+  transform: scale(0.88);
 }
 
 .profile-copy { align-self: start; }
