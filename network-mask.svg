@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1000">
+  <!-- Generated deterministically by scripts/generate-network.mjs. -->
+  <g fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M890 475.1 L972.1 522.3" stroke-width="0.82" stroke-opacity="0.5"/>
+    <path d="M890 475.1 L844.6 384.5" stroke-width="1.02" stroke-opacity="0.5"/>
+    <path d="M637.8 272.8 L637.6 332.7" stroke-width="0.82" stroke-opacity="0.4"/>
+    <path d="M637.8 272.8 L627.1 372" stroke-width="0.82" stroke-opacity="0.5"/>
+    <path d="M758.1 756.5 L841.2 691.9" stroke-width="0.82" stroke-opacity="0.5"/>
+    <path d="M758.1 756.5 Q698.1 767.8 637.7 759.1" stroke-width="0.62" stroke-opacity="0.3"/>
+    <path d="M972.1 522.3 L1016.5 583.9" stroke-width="1.02" stroke-opacity="0.5"/>
+    <path d="M972.1 522.3 L980.7 608.7" stroke-width="0.82" stroke-opacity="0.4"/>
+    <path d="M841.2 691.9 L980.7 608.7" stroke-width="0.82" stroke-opacity="0.5"/>
+    <path d="M980.7 608.7 L1016.5 583.9" stroke-width="0.82" stroke-opacity="0.4"/>
+    <path d="M637.6 332.7 L627.1 372" stroke-width="0.62" stroke-opacity="0.3"/>
+    <path d="M972.1 522.3 L844.6 384.5" stroke-width="1.02" stroke-opacity="0.6"/>
+    <path d="M841.2 691.9 L637.7 759.1" stroke-width="0.82" stroke-opacity="0.5"/>
+    <path d="M497.7 286.1 L477 131.2" stroke-width="0.62" stroke-opacity="0.3"/>
+    <path d="M497.7 286.1 Q426.5 339 339 353.1" stroke-width="0.62" stroke-opacity="0.4"/>
+    <path d="M329.5 119.3 L368.3 -12.8" stroke-width="0.82" stroke-opacity="0.4"/>
+    <path d="M329.5 119.3 L477 131.2" stroke-width="0.82" stroke-opacity="0.5"/>
+    <path d="M368.3 -12.8 L477 131.2" stroke-width="0.62" stroke-opacity="0.3"/>
+    <path d="M329.5 119.3 L339 353.1" stroke-width="0.82" stroke-opacity="0.5"/>
+    <path d="M329.5 119.3 Q248.9 156.7 160.1 155.9" stroke-width="0.82" stroke-opacity="0.4"/>
+    <path d="M339 353.1 L160.1 155.9" stroke-width="0.62" stroke-opacity="0.4"/>
+    <path d="M997.8 491.7 L905.7 442" stroke-width="0.82" stroke-opacity="0.5"/>
+    <path d="M997.8 491.7 L918.4 351.9" stroke-width="0.82" stroke-opacity="0.4"/>
+    <path d="M1258.3 429.1 L1205.4 393.7" stroke-width="0.62" stroke-opacity="0.3"/>
+    <path d="M1258.3 429.1 L1131.3 351.5" stroke-width="0.82" stroke-opacity="0.4"/>
+    <path d="M918.4 351.9 L905.7 442" stroke-width="0.62" stroke-opacity="0.4"/>
+    <path d="M1158.8 274.7 L1131.3 351.5" stroke-width="1.02" stroke-opacity="0.6"/>
+    <path d="M1158.8 274.7 L1205.4 393.7" stroke-width="0.82" stroke-opacity="0.5"/>
+    <path d="M1131.3 351.5 L1205.4 393.7" stroke-width="0.82" stroke-opacity="0.5"/>
+    <path d="M380.7 911.2 L434.3 1027" stroke-width="0.82" stroke-opacity="0.4"/>
+    <path d="M380.7 911.2 L459.5 1033.8" stroke-width="0.62" stroke-opacity="0.4"/>
+    <path d="M459.5 1033.8 L434.3 1027" stroke-width="0.82" stroke-opacity="0.5"/>
+    <path d="M380.7 911.2 L499.4 825.1" stroke-width="0.82" stroke-opacity="0.4"/>
+    <path d="M434.3 1027 L499.4 825.1" stroke-width="0.82" stroke-opacity="0.5"/>
+    <path d="M380.7 911.2 L183 770.4" stroke-width="0.62" stroke-opacity="0.4"/>
+    <path d="M499.4 825.1 L183 770.4" stroke-width="0.82" stroke-opacity="0.4"/>
+    <path d="M1330.6 555.2 Q1336.5 592.6 1325.4 628.8" stroke-width="0.82" stroke-opacity="0.4"/>
+    <path d="M1330.6 555.2 Q1335.7 703.1 1293.2 844.9" stroke-width="0.82" stroke-opacity="0.4"/>
+    <path d="M1293.2 844.9 L1325.4 628.8" stroke-width="0.62" stroke-opacity="0.4"/>
+    <path d="M841.2 691.9 L497.7 286.1" stroke-width="0.82" stroke-opacity="0.5"/>
+    <path d="M841.2 691.9 L997.8 491.7" stroke-width="1.02" stroke-opacity="0.5"/>
+    <path d="M841.2 691.9 L499.4 825.1" stroke-width="1.02" stroke-opacity="0.6"/>
+    <path d="M841.2 691.9 L1293.2 844.9" stroke-width="0.82" stroke-opacity="0.5"/>
+    <path d="M637.8 272.8 L497.7 286.1" stroke-width="0.82" stroke-opacity="0.4"/>
+    <path d="M1258.3 429.1 Q1307.7 484.5 1330.6 555.2" stroke-width="0.62" stroke-opacity="0.4"/>
+  </g>
+  <g fill="black">
+    <circle cx="890" cy="475.1" r="1.1" fill-opacity="0.7"/>
+    <circle cx="637.8" cy="272.8" r="4.8" fill-opacity="0.95"/>
+    <circle cx="758.1" cy="756.5" r="1.9" fill-opacity="0.5"/>
+    <circle cx="972.1" cy="522.3" r="1.7" fill-opacity="0.8"/>
+    <circle cx="841.2" cy="691.9" r="8.4" fill-opacity="1"/>
+    <circle cx="980.7" cy="608.7" r="1" fill-opacity="0.5"/>
+    <circle cx="637.6" cy="332.7" r="1.3" fill-opacity="0.5"/>
+    <circle cx="1016.5" cy="583.9" r="1.1" fill-opacity="0.8"/>
+    <circle cx="627.1" cy="372" r="1.2" fill-opacity="0.5"/>
+    <circle cx="844.6" cy="384.5" r="0.8" fill-opacity="0.9"/>
+    <circle cx="637.7" cy="759.1" r="0.8" fill-opacity="0.4"/>
+    <circle cx="497.7" cy="286.1" r="0.8" fill-opacity="0.4"/>
+    <circle cx="329.5" cy="119.3" r="3.6" fill-opacity="0.8"/>
+    <circle cx="368.3" cy="-12.8" r="0.8" fill-opacity="0.5"/>
+    <circle cx="339" cy="353.1" r="1" fill-opacity="0.6"/>
+    <circle cx="477" cy="131.2" r="3.6" fill-opacity="0.5"/>
+    <circle cx="160.1" cy="155.9" r="0.8" fill-opacity="0.5"/>
+    <circle cx="997.8" cy="491.7" r="1.4" fill-opacity="0.7"/>
+    <circle cx="1258.3" cy="429.1" r="1.1" fill-opacity="0.4"/>
+    <circle cx="918.4" cy="351.9" r="3.2" fill-opacity="0.6"/>
+    <circle cx="1158.8" cy="274.7" r="4.5" fill-opacity="0.95"/>
+    <circle cx="905.7" cy="442" r="0.9" fill-opacity="0.6"/>
+    <circle cx="1131.3" cy="351.5" r="0.9" fill-opacity="0.9"/>
+    <circle cx="1205.4" cy="393.7" r="0.9" fill-opacity="0.5"/>
+    <circle cx="380.7" cy="911.2" r="2.1" fill-opacity="0.5"/>
+    <circle cx="459.5" cy="1033.8" r="1.3" fill-opacity="0.7"/>
+    <circle cx="434.3" cy="1027" r="0.8" fill-opacity="0.7"/>
+    <circle cx="499.4" cy="825.1" r="1.7" fill-opacity="0.8"/>
+    <circle cx="183" cy="770.4" r="1" fill-opacity="0.6"/>
+    <circle cx="1330.6" cy="555.2" r="3.9" fill-opacity="0.7"/>
+    <circle cx="1293.2" cy="844.9" r="3.2" fill-opacity="0.6"/>
+    <circle cx="1325.4" cy="628.8" r="0.9" fill-opacity="0.6"/>
+  </g>
+</svg>
