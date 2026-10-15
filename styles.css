@@ -9,8 +9,9 @@
   --panel-radius: 16px;
   --profile-size: 175px;
 
-  --grid: 28px;
-  --grid-line: rgba(80, 91, 107, 0.06);
+  --network-color: #1D3D9E;
+  --network-opacity: 0.17;
+  --network-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20760%20520%22%3E%0A%3Cg%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%22.68%22%20stroke-opacity%3D%22.65%22%20stroke-linecap%3D%22round%22%3E%0A%3Cpath%20d%3D%22M30%20120Q58%2042%2086%2074Q118%20164%20152%20128Q184%2086%20220%2048Q250%2084%20286%20110Q330%2092%20370%2066Q410%2076%20448%20132Q490%2084%20538%2058Q582%2064%20620%20118Q670%20128%20712%2082%22%2F%3E%0A%3Cpath%20d%3D%22M50%20280Q86%20214%20126%20236Q166%20262%20196%20318Q236%20292%20278%20254Q318%20278%20350%20334Q396%20302%20438%20244Q474%20266%20512%20310Q548%20272%20592%20230Q640%20234%20690%20286%22%2F%3E%0A%3Cpath%20d%3D%22M92%20430Q132%20370%20176%20388Q216%20404%20258%20462Q300%20436%20338%20404Q384%20418%20430%20470Q474%20446%20512%20400Q560%20414%20612%20456Q662%20458%20708%20394%22%2F%3E%0A%3Cpath%20d%3D%22M30%20120Q20%20204%2050%20280Q58%20366%2092%20430%22%2F%3E%0A%3Cpath%20d%3D%22M152%20128Q174%20224%20196%20318Q218%20398%20258%20462%22%2F%3E%0A%3Cpath%20d%3D%22M286%20110Q310%20228%20350%20334Q390%20410%20430%20470%22%2F%3E%0A%3Cpath%20d%3D%22M448%20132Q480%20218%20512%20310Q568%20380%20612%20456%22%2F%3E%0A%3Cpath%20d%3D%22M620%20118Q658%20202%20690%20286%22%2F%3E%0A%3C%2Fg%3E%0A%3Cg%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%22.7%22%20stroke-opacity%3D%22.52%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%0A%3Cpath%20d%3D%22M86%2074L126%20236L176%20388M220%2048L278%20254L338%20404M370%2066L438%20244L512%20400M538%2058L592%20230L708%20394%22%2F%3E%0A%3Cpath%20d%3D%22M86%2074L196%20318M220%2048L350%20334M370%2066L512%20310M538%2058L690%20286M126%20236L258%20462M278%20254L430%20470M438%20244L612%20456%22%2F%3E%0A%3C%2Fg%3E%0A%3Cg%20fill%3D%22black%22%3E%0A%3Ccircle%20cx%3D%2230%22%20cy%3D%22120%22%20r%3D%22.8%22%2F%3E%3Ccircle%20cx%3D%2286%22%20cy%3D%2274%22%20r%3D%222.3%22%2F%3E%3Ccircle%20cx%3D%22152%22%20cy%3D%22128%22%20r%3D%221%22%2F%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%2248%22%20r%3D%223.2%22%2F%3E%3Ccircle%20cx%3D%22286%22%20cy%3D%22110%22%20r%3D%221.4%22%2F%3E%3Ccircle%20cx%3D%22370%22%20cy%3D%2266%22%20r%3D%222%22%2F%3E%3Ccircle%20cx%3D%22448%22%20cy%3D%22132%22%20r%3D%22.9%22%2F%3E%3Ccircle%20cx%3D%22538%22%20cy%3D%2258%22%20r%3D%227.5%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22118%22%20r%3D%221.7%22%2F%3E%3Ccircle%20cx%3D%22712%22%20cy%3D%2282%22%20r%3D%222.6%22%2F%3E%0A%3Ccircle%20cx%3D%2250%22%20cy%3D%22280%22%20r%3D%22.7%22%2F%3E%3Ccircle%20cx%3D%22126%22%20cy%3D%22236%22%20r%3D%221.9%22%2F%3E%3Ccircle%20cx%3D%22196%22%20cy%3D%22318%22%20r%3D%222.8%22%2F%3E%3Ccircle%20cx%3D%22278%22%20cy%3D%22254%22%20r%3D%221%22%2F%3E%3Ccircle%20cx%3D%22350%22%20cy%3D%22334%22%20r%3D%228.5%22%2F%3E%3Ccircle%20cx%3D%22438%22%20cy%3D%22244%22%20r%3D%221.5%22%2F%3E%3Ccircle%20cx%3D%22512%22%20cy%3D%22310%22%20r%3D%222.4%22%2F%3E%3Ccircle%20cx%3D%22592%22%20cy%3D%22230%22%20r%3D%22.8%22%2F%3E%3Ccircle%20cx%3D%22690%22%20cy%3D%22286%22%20r%3D%223%22%2F%3E%0A%3Ccircle%20cx%3D%2292%22%20cy%3D%22430%22%20r%3D%221.8%22%2F%3E%3Ccircle%20cx%3D%22176%22%20cy%3D%22388%22%20r%3D%22.9%22%2F%3E%3Ccircle%20cx%3D%22258%22%20cy%3D%22462%22%20r%3D%223.4%22%2F%3E%3Ccircle%20cx%3D%22338%22%20cy%3D%22404%22%20r%3D%22.8%22%2F%3E%3Ccircle%20cx%3D%22430%22%20cy%3D%22470%22%20r%3D%222.5%22%2F%3E%3Ccircle%20cx%3D%22512%22%20cy%3D%22400%22%20r%3D%221.1%22%2F%3E%3Ccircle%20cx%3D%22612%22%20cy%3D%22456%22%20r%3D%223%22%2F%3E%3Ccircle%20cx%3D%22708%22%20cy%3D%22394%22%20r%3D%221%22%2F%3E%0A%3C%2Fg%3E%0A%3Cg%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%22.85%22%20stroke-opacity%3D%22.42%22%3E%0A%3Ccircle%20cx%3D%22538%22%20cy%3D%2258%22%20r%3D%2211.5%22%2F%3E%3Ccircle%20cx%3D%22350%22%20cy%3D%22334%22%20r%3D%2212.5%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E");
 }
 
 * { box-sizing: border-box; }
@@ -23,11 +24,22 @@ html{
 
 
 body{
-  background:
-    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
-    #f7f8fa;
+  position: relative;
+  margin: 0;
+  background: #f7f8fa;
   color: var(--body);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background: var(--network-color);
+  opacity: var(--network-opacity);
+  -webkit-mask: var(--network-mask) 0 0 / 760px 520px repeat;
+  mask: var(--network-mask) 0 0 / 760px 520px repeat;
 }
 * {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -53,8 +65,12 @@ p {
 }
 
 .center{
+  position: relative;
+  z-index: 1;
+  width: 100%;
   /* min-height:100vh; */
   display:grid;
+  grid-template-columns: minmax(0, 1fr);
   background: transparent;
   /* place-items:center; */
   justify-items:center;  /* horizontal center */
@@ -304,7 +320,11 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
     gap: 24px;
   }
 
-  .profile-media { grid-column: 1; grid-row: 1; }
+  .profile-media {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
+  }
   .profile-photo { max-width: 100%; }
   .about-copy { grid-column: 1; grid-row: 2; text-align: center; }
   .about-copy p { max-width: none; }
@@ -597,10 +617,14 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
 }
 
 @media (max-width: 520px) {
+  .glass {
+    width: 100%;
+  }
+
   .site-nav {
     top: 8px;
     gap: 6px;
-    width: calc(100vw - 24px);
+    width: 100%;
     padding-inline: 7px;
   }
 
@@ -622,7 +646,7 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
     align-items: flex-start;
     flex-direction: column;
     gap: 14px;
-    width: calc(100vw - 24px);
+    width: 100%;
     padding: 16px;
   }
 
@@ -699,15 +723,13 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
 /* slightly lighter link blue in dark mode */
 html.dark {
   --blue: #93c5fd;
-  --grid-line: rgba(148, 163, 184, 0.06);
+  --network-color: #93c5fd;
+  --network-opacity: 0.12;
 }
 
 /* main background + base text color */
 html.dark body {
-  background:
-    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
-    #020617;
+  background: #020617;
   color: #e5e7eb;
 }
 
@@ -737,6 +759,13 @@ html.dark .email a:hover {
 html.dark .info li,
 html.dark .info a {
   color: #e5e7eb;
+}
+
+html.dark .info i,
+html.dark .code-heading i,
+html.dark .footer-link i,
+html.dark .theme-toggle i {
+  color: var(--blue);
 }
 
 /* main glass panels */
