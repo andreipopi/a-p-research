@@ -4,22 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Andrei Popescu</title>
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=10" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;600;700&amp;family=IBM+Plex+Sans:wght@400;600&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const root = document.documentElement;
       const themeBtn = document.getElementById('theme-toggle');
-      const researchBtn = document.getElementById('research-toggle');
-      const bioBtn = document.getElementById('bio-toggle');
-      const bioPanel = document.getElementById('bio-panel');
       const siteNav = document.querySelector('.site-nav');
-      const homeTriggers = document.querySelectorAll('[data-home-trigger]');
-      const researchPanels = document.querySelectorAll('[data-research-panel]');
+      const sectionTriggers = document.querySelectorAll('[data-section-target]');
+      const sectionButtons = document.querySelectorAll('.nav-btn[data-section-target]');
+      const sectionPanels = document.querySelectorAll('[data-section-panel]');
+      const backToTopBtn = document.getElementById('back-to-top');
 
       if (siteNav) {
         const updateNavigationSize = function () {
@@ -31,37 +30,52 @@
       }
 
       if (themeBtn) {
+        const updateThemeButton = function () {
+          const isDark = root.classList.contains('dark');
+          const icon = themeBtn.querySelector('i');
+
+          if (icon) {
+            icon.className = isDark ? 'fa-regular fa-sun' : 'fa-regular fa-moon';
+          }
+
+          themeBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+          themeBtn.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        };
+
         themeBtn.addEventListener('click', function () {
           root.classList.toggle('dark');
+          updateThemeButton();
         });
+
+        updateThemeButton();
       }
 
-      if (bioBtn && bioPanel) {
-        const showResearch = function () {
-          bioPanel.hidden = true;
-          researchPanels.forEach(function (panel) {
-            panel.hidden = false;
-          });
-          bioBtn.setAttribute('aria-expanded', 'false');
-          if (researchBtn) researchBtn.setAttribute('aria-pressed', 'true');
-        };
-
-        const showBio = function () {
-          bioPanel.hidden = false;
-          researchPanels.forEach(function (panel) {
-            panel.hidden = true;
-          });
-          bioBtn.setAttribute('aria-expanded', 'true');
-          if (researchBtn) researchBtn.setAttribute('aria-pressed', 'false');
-        };
-
-        bioBtn.addEventListener('click', function () {
-          showBio();
+      const showSection = function (sectionName) {
+        sectionPanels.forEach(function (panel) {
+          panel.hidden = panel.dataset.sectionPanel !== sectionName;
         });
 
-        homeTriggers.forEach(function (trigger) {
-          trigger.addEventListener('click', function () {
-            showResearch();
+        sectionButtons.forEach(function (button) {
+          button.setAttribute('aria-pressed', String(button.dataset.sectionTarget === sectionName));
+        });
+
+        window.scrollTo({
+          top: 0,
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+        });
+      };
+
+      sectionTriggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+          showSection(trigger.dataset.sectionTarget);
+        });
+      });
+
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', function () {
+          window.scrollTo({
+            top: 0,
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
           });
         });
       }
@@ -80,111 +94,159 @@
 
   <main class="center">
     <nav class="site-nav" aria-label="Primary navigation">
-      <button
-        class="nav-btn"
-        id="research-toggle"
-        type="button"
-        aria-pressed="true"
-        data-home-trigger
-      >
-        Research
+      <button class="site-name" type="button" data-section-target="home" aria-label="Show home">
+        Andrei Popescu
       </button>
-      <button
-        class="nav-btn"
-        id="bio-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="bio-panel"
-      >
-        Bio
-      </button>
-      <button
-        class="nav-btn theme-toggle"
-        id="theme-toggle"
-        type="button"
-        aria-label="Toggle dark mode"
-      >
-        <i class="fa-regular fa-moon" aria-hidden="true"></i>
-      </button>
+
+      <div class="nav-menu">
+        <button
+          class="nav-btn"
+          id="home-toggle"
+          type="button"
+          aria-pressed="true"
+          data-section-target="home"
+        >
+          Home
+        </button>
+        <button
+          class="nav-btn"
+          id="research-toggle"
+          type="button"
+          aria-pressed="false"
+          data-section-target="research"
+        >
+          Research
+        </button>
+        <button
+          class="nav-btn theme-toggle"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+        >
+          <i class="fa-regular fa-moon" aria-hidden="true"></i>
+        </button>
+      </div>
     </nav>
 
-    <div class="homeglass">
-      <div class="profile-media">
-        <button class="profile-photo home-trigger" type="button" data-home-trigger aria-label="Home">
-          <img src="andrei-popescu-profile.jpeg" alt="Andrei Popescu">
-        </button>
-
-        <ul class="info" aria-label="Contact and research profiles">
-          <!-- Affiliation: TU Graz -->
-          <li>
-            <a href="mailto:andrei.popescu@tugraz.at" aria-label="Email" title="Email">
-              <i class="fa-regular fa-envelope" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/andrei-popescu" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://dblp.org/pid/231/4051" target="_blank" rel="noopener" aria-label="DBLP" title="DBLP">
-              <i class="ai ai-dblp" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/andreipopi" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
-              <i class="fa-brands fa-github" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://orcid.org/0000-0002-6601-5454" target="_blank" rel="noopener" aria-label="ORCID" title="ORCID">
-              <i class="ai ai-orcid" aria-hidden="true"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="profile-copy">
-        <h1><button class="home-trigger home-name" type="button" data-home-trigger>Andrei Popescu</button></h1>
-        <p class="profile-bio">
-          I’m an AI researcher holding a PhD in Computer Science. My doctoral work focused on decomposition-based algorithms for exact reasoning in structured and probabilistic argumentation. My current work focuses on fine-tuning language models for exact reasoning tasks, including argumentative reasoning.
-        </p>
-      </div>
-
-    </div>
-
-    <div class="glass bio-panel" id="bio-panel" hidden>
+    <div class="glass about-panel" id="home-panel" data-section-panel="home">
       <section class="sub">
-        <h2>Andrei Popescu</h2>
+        <div class="about-intro">
+          <div class="profile-media">
+            <div class="profile-photo">
+              <img src="andrei-popescu-profile.jpeg" alt="Andrei Popescu">
+            </div>
 
-        <p>
-          My research background spans knowledge representation, formal reasoning, and algorithm design. I am now applying this experience to the fine-tuning and evaluation of language models on exact reasoning tasks.
-        </p>
+            <ul class="info" aria-label="Contact and research profiles">
+              <li>
+                <a href="mailto:andrei.popescu@tugraz.at" aria-label="Email" title="Email">
+                  <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/andrei-popescu" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://dblp.org/pid/231/4051" target="_blank" rel="noopener" aria-label="DBLP" title="DBLP">
+                  <i class="ai ai-dblp" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/andreipopi" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://orcid.org/0000-0002-6601-5454" target="_blank" rel="noopener" aria-label="ORCID" title="ORCID">
+                  <i class="ai ai-orcid" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        <p class="bio-links">
-          <a href="https://dblp.org/pid/231/4051" target="_blank" rel="noopener">DBLP</a>
-          <span aria-hidden="true">·</span>
-          <a href="https://gitlab.tugraz.at/krr" target="_blank" rel="noopener">Code</a>
-          <span aria-hidden="true">·</span>
-          <a href="https://www.linkedin.com/in/andrei-popescu" target="_blank" rel="noopener">LinkedIn</a>
-          <span aria-hidden="true">·</span>
-          <a href="mailto:andrei-popescu@outlook.com">Email</a>
-        </p>
+          <div class="about-copy">
+            <h2>Bio</h2>
+            <p>
+              I’m an AI researcher holding a PhD in Computer Science. My doctoral work focused on decomposition-based algorithms for exact reasoning in structured and probabilistic argumentation. My current work focuses on fine-tuning language models for exact reasoning tasks, including argumentative reasoning.
+            </p>
+            <p>
+              My research background spans knowledge representation, formal reasoning, and algorithm design. I am now applying this experience to the fine-tuning and evaluation of language models on exact reasoning tasks.
+            </p>
+          </div>
+        </div>
 
-        <h3>🎓 Education</h3>
-        <ul>
-          <li><strong>PhD in Computer Science</strong> <em>(awarded with distinction)</em>, Graz University of Technology, Graz, Austria (July 2026)</li>
-          <li><strong>MSc in Artificial Intelligence</strong>, Utrecht University, Utrecht, the Netherlands (August 2019)</li>
-          <li><strong>BSc in Computer Science and Engineering</strong>, Free University of Bolzano, Bolzano, Italy (July 2017)</li>
-        </ul>
+        <div class="about-details">
+          <section class="home-section">
+            <h2>Education</h2>
+            <ul>
+              <li><strong>PhD in Computer Science</strong> <em>(awarded with distinction)</em>, Graz University of Technology, Graz, Austria (July 2026)</li>
+              <li><strong>MSc in Artificial Intelligence</strong>, Utrecht University, Utrecht, the Netherlands (August 2019)</li>
+              <li><strong>BSc in Computer Science and Engineering</strong>, Free University of Bolzano, Bolzano, Italy (July 2017)</li>
+            </ul>
+          </section>
 
-        <h3>💻 Code</h3>
-        <p>
-          Code and prototypes for my main publications are available in the
-          <a href="https://gitlab.tugraz.at/krr" target="_blank" rel="noopener">TU Graz Knowledge Representation and Reasoning (KRR) GitLab group</a>.
-          My complete publication list is available on
-          <a href="https://dblp.org/pid/231/4051" target="_blank" rel="noopener">DBLP</a>.
-        </p>
+          <section class="home-section">
+            <h2>Selected Publications</h2>
+            <ul class="pubs home-publications">
+              <li class="pub-item">
+                <p class="pub-citation">
+                  <span class="authors">Andrei Popescu and Johannes Peter Wallner. 2025.</span>
+                  <span class="title"> Completing Structured Arguments in Assumption-Based Argumentation. </span>
+                  <span class="venue"><em>In Proc. JELIA 2025, Part I, 16093:95–111.</em></span>
+                </p>
+                <p class="pub-summary">A declarative approach to completing partial structured arguments in assumption-based argumentation.</p>
+                <p class="pub-links">
+                  <a href="https://gitlab.tugraz.at/krr/aba-completion/-/blob/main/paper_with_appendix.pdf?ref_type=heads" target="_blank" rel="noopener">Paper</a>
+                  <span aria-hidden="true">·</span>
+                  <a href="https://gitlab.tugraz.at/krr/aba-completion" target="_blank" rel="noopener">Code</a>
+                </p>
+              </li>
+
+              <li class="pub-item">
+                <p class="pub-citation">
+                  <span class="authors">Andrei Popescu and Johannes Peter Wallner. 2025.</span>
+                  <span class="title"> Dynamic Programming Algorithms for Probabilistic Bipolar Argumentation Frameworks. </span>
+                  <span class="venue"><em>In Proc. SAC 2025, 1051–1052.</em></span>
+                </p>
+                <p class="pub-summary">Dynamic-programming algorithms for reasoning in probabilistic bipolar argumentation frameworks.</p>
+                <p class="pub-links">
+                  <a href="https://dl.acm.org/doi/10.1145/3672608.3707819" target="_blank" rel="noopener">Paper</a>
+                  <span aria-hidden="true">·</span>
+                  <a href="https://gitlab.tugraz.at/krr/pbaf-td" target="_blank" rel="noopener">Code</a>
+                </p>
+              </li>
+
+              <li class="pub-item">
+                <p class="pub-citation">
+                  <span class="authors">Andrei Popescu and Johannes Peter Wallner. 2024.</span>
+                  <span class="title"> Advancing Algorithmic Approaches to Probabilistic Argumentation under the Constellation Approach. </span>
+                  <span class="venue"><em>In Proc. KR 2024, 585–596.</em></span>
+                </p>
+                <p class="pub-summary">Tree-decomposition-based algorithms that exploit graph structure in probabilistic argumentation.</p>
+                <p class="pub-links">
+                  <a href="https://proceedings.kr.org/2024/55/kr2024-0055-popescu-et-al.pdf" target="_blank" rel="noopener">Paper</a>
+                  <span aria-hidden="true">·</span>
+                  <a href="https://gitlab.tugraz.at/krr/paf-td" target="_blank" rel="noopener">Code</a>
+                </p>
+              </li>
+            </ul>
+            <p class="publication-continuation" aria-label="More publications">…</p>
+            <p class="home-publication-links">
+              <button class="inline-nav-link" type="button" data-section-target="research">Continue in Research</button>
+              <span aria-hidden="true">·</span>
+              <a href="https://dblp.org/pid/231/4051" target="_blank" rel="noopener">Full list on DBLP</a>
+            </p>
+          </section>
+
+          <section class="home-section">
+            <h2 class="code-heading"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</h2>
+            <p>
+              My public code and projects are available on
+              <a href="https://github.com/andreipopi" target="_blank" rel="noopener">GitHub</a>.
+            </p>
+          </section>
+        </div>
 
       </section>
     </div>
@@ -310,7 +372,7 @@
     -->
     </div>
 
-    <div class="glass publications-panel" data-research-panel>
+    <div class="glass publications-panel" data-section-panel="research" hidden>
       <section class="sub">
         <h2>Selected Publications</h2>
         <ul class="pubs">
@@ -441,6 +503,36 @@
         </p>
       </section>
     </div>
+
+    <footer class="site-footer" aria-label="Contact links">
+      <div class="footer-links">
+        <a class="footer-link" href="mailto:andrei.popescu@tugraz.at">
+          <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+          <span>Email</span>
+        </a>
+        <a class="footer-link" href="https://www.linkedin.com/in/andrei-popescu" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a class="footer-link" href="https://dblp.org/pid/231/4051" target="_blank" rel="noopener">
+          <i class="ai ai-dblp" aria-hidden="true"></i>
+          <span>DBLP</span>
+        </a>
+        <a class="footer-link" href="https://github.com/andreipopi" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+          <span>GitHub</span>
+        </a>
+        <a class="footer-link" href="https://orcid.org/0000-0002-6601-5454" target="_blank" rel="noopener">
+          <i class="ai ai-orcid" aria-hidden="true"></i>
+          <span>ORCID</span>
+        </a>
+      </div>
+
+      <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">
+        <span>Back to top</span>
+        <span class="footer-triangle" aria-hidden="true"></span>
+      </button>
+    </footer>
   </main>
 </body>
 </html>
