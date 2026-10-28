@@ -1,0 +1,514 @@
+/*
+  Deep theme
+
+  This file is an optional visual layer over styles.css. It deliberately contains
+  no layout or content rules. Comment out its <link> in index.html to restore the
+  original site theme exactly.
+*/
+
+:root {
+  --deep-canvas: #eef1f3;
+  --deep-panel: #f9fbfc;
+  --deep-ink: #192632;
+  --deep-muted: #65727e;
+  --deep-accent: #263f5a;
+  --deep-accent-strong: #315777;
+  --deep-accent-soft: #d9e4ec;
+  --deep-line: #bdcbd5;
+  --deep-hard-shadow: #7c8f9f;
+
+  --accent: var(--deep-accent);
+  --blue: var(--deep-accent-strong);
+  --navy: var(--deep-ink);
+  --body: var(--deep-ink);
+  --muted: var(--deep-muted);
+  --rule: var(--deep-line);
+  --panel-radius: 0;
+  --network-color: var(--deep-accent);
+  --network-opacity: 0;
+}
+
+html[data-site-palette="open"] {
+  --deep-canvas: #f3f3f5;
+  --deep-panel: #fcfcfd;
+  --deep-ink: #202322;
+  --deep-muted: #6c7273;
+  --deep-accent: #1b1b1b;
+  --deep-accent-strong: #303030;
+  --deep-accent-soft: #e5e5e9;
+  --deep-line: #c7cbcd;
+  --deep-hard-shadow: #777777;
+  --network-opacity: 0;
+}
+
+html[data-site-palette="tropic"] {
+  --deep-canvas: #f2eee7;
+  --deep-panel: #fffaf2;
+  --deep-ink: #2d302b;
+  --deep-muted: #737b75;
+  --deep-accent: #6b4e3e;
+  --deep-accent-strong: #7d5a45;
+  --deep-accent-soft: #eadacb;
+  --deep-line: #ccb9aa;
+  --deep-hard-shadow: #9d8675;
+  --network-opacity: 0;
+}
+
+html[data-site-palette="blue"] {
+  --deep-canvas: #f7f8fa;
+  --deep-panel: #ffffff;
+  --deep-ink: #1e2734;
+  --deep-muted: #505b6b;
+  --deep-accent: #1d3d9e;
+  --deep-accent-strong: #14223f;
+  --deep-accent-soft: #d7dfe9;
+  --deep-line: #d7dfe9;
+  --deep-hard-shadow: #8797ad;
+  --network-opacity: 0.17;
+}
+
+body {
+  background: var(--deep-canvas);
+  color: var(--deep-ink);
+}
+
+.glass,
+.profile-media,
+.site-nav,
+.site-footer {
+  border: 1px solid var(--deep-accent);
+  border-radius: 0;
+  background: var(--deep-panel);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: 5px 5px 0 var(--deep-hard-shadow);
+}
+
+.glass {
+  overflow: hidden;
+}
+
+.profile-media {
+  box-shadow: 4px 4px 0 var(--deep-hard-shadow);
+}
+
+.profile-photo,
+.thesis-figure img,
+.pubs li,
+.invitedtag,
+.submittedtag {
+  border-radius: 0;
+}
+
+.profile-photo {
+  border: 1px solid var(--deep-line);
+}
+
+h1 {
+  color: var(--deep-ink);
+}
+
+h2,
+h3,
+.publication-group-title {
+  color: var(--deep-accent-strong);
+}
+
+h2::after {
+  height: 1px;
+  background: var(--deep-line);
+}
+
+a,
+.email a,
+.inline-nav-link,
+.footer-link,
+.back-to-top {
+  color: var(--deep-accent-strong);
+}
+
+.pubs li {
+  border: 1px solid var(--deep-line);
+  background: var(--deep-panel);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.pubs li:hover {
+  border-color: var(--deep-accent-strong);
+}
+
+.pub-summary,
+.venue,
+.pages,
+.publication-continuation {
+  color: var(--deep-muted);
+}
+
+.home-section p {
+  text-align: left;
+}
+
+.site-nav {
+  background: var(--deep-accent);
+  color: var(--deep-panel);
+}
+
+.site-nav.is-compact {
+  border-radius: 0;
+  box-shadow: 5px 5px 0 var(--deep-hard-shadow);
+}
+
+.site-name,
+.nav-btn,
+.theme-toggle,
+.site-name:hover,
+.nav-btn:hover {
+  border-radius: 0;
+  color: var(--deep-panel);
+  background: transparent;
+}
+
+.nav-btn:hover,
+.site-name:hover {
+  background: transparent;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.nav-btn[aria-pressed="true"],
+.nav-btn[aria-expanded="true"] {
+  color: var(--deep-panel);
+  background: transparent;
+  text-decoration: underline;
+  text-decoration-color: var(--deep-accent-soft);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  box-shadow: none;
+}
+
+.site-name:focus-visible,
+.nav-btn:focus-visible,
+.inline-nav-link:focus-visible,
+.footer-link:focus-visible,
+.back-to-top:focus-visible {
+  border-radius: 0;
+  outline-color: var(--deep-accent-strong);
+}
+
+.info li,
+.info a,
+.info i,
+.code-heading i {
+  color: var(--deep-accent-strong);
+}
+
+.site-footer {
+  background: var(--deep-panel);
+}
+
+.footer-copyright {
+  color: var(--deep-muted);
+}
+
+.palette-picker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 2px;
+}
+
+.palette-options {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 0;
+  z-index: 30;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--deep-accent);
+  background: var(--deep-panel);
+  box-shadow: 3px 3px 0 var(--deep-hard-shadow);
+}
+
+.palette-options[hidden] {
+  display: none;
+}
+
+.palette-swatch {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border: 1px solid var(--deep-line);
+  border-radius: 0;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--deep-hard-shadow);
+}
+
+.palette-swatch-deep {
+  background: #315777;
+}
+
+.palette-swatch-open {
+  background: #252525;
+}
+
+.palette-swatch-tropic {
+  background: #7d5a45;
+}
+
+.palette-swatch-blue {
+  background: #1d3d9e;
+}
+
+.palette-swatch-default,
+.palette-picker[data-current-palette="default"] .palette-trigger {
+  border-radius: 50%;
+  background: #1d3d9e;
+}
+
+.palette-picker[data-current-palette="deep"] .palette-trigger {
+  background: #315777;
+}
+
+.palette-picker[data-current-palette="open"] .palette-trigger {
+  background: #252525;
+}
+
+.palette-picker[data-current-palette="tropic"] .palette-trigger {
+  background: #7d5a45;
+}
+
+.palette-picker[data-current-palette="blue"] .palette-trigger {
+  background: #1d3d9e;
+}
+
+.palette-swatch:hover {
+  transform: translateY(-1px);
+}
+
+.palette-swatch[aria-pressed="true"] {
+  outline: 2px solid var(--deep-ink);
+  outline-offset: 2px;
+}
+
+.palette-swatch:focus-visible {
+  outline: 3px solid var(--deep-accent-strong);
+  outline-offset: 3px;
+}
+
+/* Keep the existing light/dark control useful while Deep is active. */
+html.dark {
+  --deep-canvas: #101923;
+  --deep-panel: #17232e;
+  --deep-ink: #edf2f5;
+  --deep-muted: #a9b5bf;
+  --deep-accent: #1b3042;
+  --deep-accent-strong: #7fa6c4;
+  --deep-accent-soft: #314b61;
+  --deep-line: #405568;
+  --deep-hard-shadow: #070d13;
+
+  --accent: var(--deep-accent-strong);
+  --blue: #a7c9e0;
+  --navy: var(--deep-ink);
+  --body: var(--deep-ink);
+  --muted: var(--deep-muted);
+  --rule: var(--deep-line);
+  --network-color: var(--deep-accent-strong);
+  --network-opacity: 0;
+}
+
+html.dark[data-site-palette="open"] {
+  --deep-canvas: #111111;
+  --deep-panel: #1b1b1b;
+  --deep-ink: #f1f1f1;
+  --deep-muted: #aaaaaa;
+  --deep-accent: #0d0d0d;
+  --deep-accent-strong: #d0d0d0;
+  --deep-accent-soft: #353535;
+  --deep-line: #535353;
+  --deep-hard-shadow: #050505;
+  --network-opacity: 0;
+}
+
+html.dark[data-site-palette="tropic"] {
+  --deep-canvas: #211812;
+  --deep-panel: #2b2019;
+  --deep-ink: #f3e9df;
+  --deep-muted: #c0aa99;
+  --deep-accent: #3d2a21;
+  --deep-accent-strong: #d2a786;
+  --deep-accent-soft: #4a3429;
+  --deep-line: #6f5545;
+  --deep-hard-shadow: #0e0906;
+  --network-opacity: 0;
+}
+
+html.dark[data-site-palette="blue"] {
+  --deep-canvas: #020617;
+  --deep-panel: #0f172a;
+  --deep-ink: #e5e7eb;
+  --deep-muted: #94a3b8;
+  --deep-accent: #14245f;
+  --deep-accent-strong: #93c5fd;
+  --deep-accent-soft: #1e3a5f;
+  --deep-line: #334155;
+  --deep-hard-shadow: #00030a;
+  --network-opacity: 0.14;
+}
+
+html.dark .palette-swatch-deep,
+html.dark .palette-picker[data-current-palette="deep"] .palette-trigger {
+  background: #1b3042;
+}
+
+html.dark .palette-swatch-open,
+html.dark .palette-picker[data-current-palette="open"] .palette-trigger {
+  background: #0d0d0d;
+}
+
+html.dark .palette-swatch-tropic,
+html.dark .palette-picker[data-current-palette="tropic"] .palette-trigger {
+  background: #3d2a21;
+}
+
+html.dark .palette-swatch-blue,
+html.dark .palette-picker[data-current-palette="blue"] .palette-trigger {
+  background: #14245f;
+}
+
+html[data-site-palette="blue"] .glass {
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(2px) saturate(0.9);
+  backdrop-filter: blur(2px) saturate(0.9);
+}
+
+html[data-site-palette="blue"] .profile-media {
+  background: rgba(255, 255, 255, 0.34);
+  -webkit-backdrop-filter: blur(14px) saturate(1.12);
+  backdrop-filter: blur(14px) saturate(1.12);
+}
+
+html[data-site-palette="blue"] .site-footer {
+  background: rgba(247, 248, 250, 0.86);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  backdrop-filter: blur(18px) saturate(1.25);
+}
+
+html[data-site-palette="blue"] .pubs li {
+  background: rgba(255, 255, 255, 0.24);
+  -webkit-backdrop-filter: blur(12px) saturate(1.05);
+  backdrop-filter: blur(12px) saturate(1.05);
+}
+
+html.dark body {
+  background: var(--deep-canvas);
+  color: var(--deep-ink);
+}
+
+html.dark h1,
+html.dark h2,
+html.dark h3 {
+  color: var(--deep-ink);
+}
+
+html.dark h2::after {
+  background: var(--deep-line);
+}
+
+html.dark .glass,
+html.dark .profile-media,
+html.dark .site-nav,
+html.dark .site-footer {
+  border-color: var(--deep-line);
+  border-radius: 0;
+  box-shadow: 5px 5px 0 var(--deep-hard-shadow);
+}
+
+html.dark .glass,
+html.dark .profile-media,
+html.dark .site-footer {
+  background: var(--deep-panel);
+}
+
+html.dark .site-nav {
+  background: var(--deep-accent);
+}
+
+html.dark .pubs li {
+  border-color: var(--deep-line);
+  border-radius: 0;
+  background: var(--deep-panel);
+  box-shadow: none;
+}
+
+html.dark .site-name,
+html.dark .nav-btn,
+html.dark .theme-toggle,
+html.dark .site-name:hover,
+html.dark .nav-btn:hover,
+html.dark .nav-btn[aria-pressed="true"],
+html.dark .nav-btn[aria-expanded="true"] {
+  border-radius: 0;
+  color: var(--deep-ink);
+}
+
+html.dark .site-name:hover,
+html.dark .nav-btn:hover,
+html.dark .nav-btn[aria-pressed="true"],
+html.dark .nav-btn[aria-expanded="true"] {
+  background: transparent;
+  text-decoration: underline;
+}
+
+html.dark .info li,
+html.dark .info a,
+html.dark .info i,
+html.dark .code-heading i,
+html.dark .footer-link i,
+html.dark .theme-toggle i,
+html.dark .publication-group-title,
+html.dark .inline-nav-link,
+html.dark a,
+html.dark .email a {
+  color: var(--deep-accent-strong);
+}
+
+html.dark .authors,
+html.dark .footer-link,
+html.dark .back-to-top {
+  color: var(--deep-ink);
+}
+
+html.dark .venue,
+html.dark .pages,
+html.dark .pub-summary,
+html.dark .publication-continuation,
+html.dark .footer-copyright {
+  color: var(--deep-muted);
+}
+
+html.dark[data-site-palette="blue"] .glass,
+html.dark[data-site-palette="blue"] .profile-media,
+html.dark[data-site-palette="blue"] .site-footer {
+  background: rgba(15, 23, 42, 0.62);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  backdrop-filter: blur(18px) saturate(1.15);
+}
+
+html.dark[data-site-palette="blue"] .pubs li {
+  background: rgba(15, 23, 42, 0.36);
+  -webkit-backdrop-filter: blur(12px) saturate(1.05);
+  backdrop-filter: blur(12px) saturate(1.05);
+}
+
+@media (max-width: 520px) {
+  .glass,
+  .site-nav,
+  .site-footer {
+    box-shadow: 4px 4px 0 var(--deep-hard-shadow);
+  }
+}

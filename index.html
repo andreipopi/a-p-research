@@ -1,10 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-site-palette="default">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Andrei Popescu</title>
-  <link rel="stylesheet" href="styles.css?v=30" />
+  <link rel="stylesheet" href="styles.css?v=33" />
+  <!-- Alternative palettes are enabled from the footer picker. -->
+  <link id="palette-theme-styles" rel="stylesheet" href="theme-deep.css?v=3" disabled />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,6 +21,70 @@
       const sectionButtons = document.querySelectorAll('.nav-btn[data-section-target]');
       const sectionPanels = document.querySelectorAll('[data-section-panel]');
       const backToTopBtn = document.getElementById('back-to-top');
+      const paletteButtons = document.querySelectorAll('[data-palette]');
+      const palettePicker = document.querySelector('.palette-picker');
+      const paletteToggle = document.getElementById('palette-toggle');
+      const paletteOptions = document.getElementById('palette-options');
+      const paletteThemeStyles = document.getElementById('palette-theme-styles');
+      const availablePalettes = ['default', 'deep', 'open', 'tropic', 'blue'];
+
+      const applyPalette = function (palette, persist) {
+        const selectedPalette = availablePalettes.includes(palette) ? palette : 'default';
+        root.dataset.sitePalette = selectedPalette;
+
+        if (paletteThemeStyles) {
+          paletteThemeStyles.disabled = selectedPalette === 'default';
+        }
+
+        if (palettePicker) {
+          palettePicker.dataset.currentPalette = selectedPalette;
+        }
+
+        paletteButtons.forEach(function (button) {
+          button.setAttribute('aria-pressed', String(button.dataset.palette === selectedPalette));
+        });
+
+        if (persist) {
+          try {
+            window.localStorage.setItem('site-palette-v3', selectedPalette);
+          } catch (error) {
+            // The palette still works when browser storage is unavailable.
+          }
+        }
+      };
+
+      let initialPalette = 'default';
+
+      try {
+        initialPalette = window.localStorage.getItem('site-palette-v3') || initialPalette;
+      } catch (error) {
+        // Use the original theme when browser storage is unavailable.
+      }
+
+      applyPalette(initialPalette, false);
+
+      paletteButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          applyPalette(button.dataset.palette, true);
+          paletteOptions.hidden = true;
+          paletteToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      if (paletteToggle && paletteOptions) {
+        paletteToggle.addEventListener('click', function () {
+          const willOpen = paletteOptions.hidden;
+          paletteOptions.hidden = !willOpen;
+          paletteToggle.setAttribute('aria-expanded', String(willOpen));
+        });
+
+        document.addEventListener('click', function (event) {
+          if (!palettePicker.contains(event.target)) {
+            paletteOptions.hidden = true;
+            paletteToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
 
       if (siteNav) {
         const updateNavigationSize = function () {
@@ -563,6 +629,16 @@
           <i class="ai ai-orcid" aria-hidden="true"></i>
           <span>ORCID</span>
         </a>
+        <div class="palette-picker" data-current-palette="default">
+          <button class="palette-swatch palette-trigger" id="palette-toggle" type="button" aria-label="Choose color theme" aria-expanded="false" aria-controls="palette-options"></button>
+          <div class="palette-options" id="palette-options" role="group" aria-label="Color theme" hidden>
+            <button class="palette-swatch palette-swatch-default" type="button" data-palette="default" aria-label="Original site theme" title="Original theme" aria-pressed="true"></button>
+            <button class="palette-swatch palette-swatch-deep" type="button" data-palette="deep" aria-label="Deep color theme" title="Deep" aria-pressed="false"></button>
+            <button class="palette-swatch palette-swatch-open" type="button" data-palette="open" aria-label="Open color theme" title="Open" aria-pressed="false"></button>
+            <button class="palette-swatch palette-swatch-tropic" type="button" data-palette="tropic" aria-label="Tropic color theme" title="Tropic" aria-pressed="false"></button>
+            <button class="palette-swatch palette-swatch-blue" type="button" data-palette="blue" aria-label="Original blue color theme" title="Original blue" aria-pressed="false"></button>
+          </div>
+        </div>
       </div>
 
       <div class="footer-meta">
