@@ -564,6 +564,13 @@ html[data-site-palette="glass-blue"] .footer-link i {
   color: var(--deep-accent);
 }
 
+html[data-site-palette="glass-blue"] .about-copy a {
+  color: var(--deep-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
 html[data-site-palette="glass-blue"] .site-nav,
 html[data-site-palette="glass-blue"] .site-nav.is-compact {
   color: var(--deep-accent);
@@ -623,5 +630,9 @@ html.dark[data-site-palette="glass-blue"] .info a,
 html.dark[data-site-palette="glass-blue"] .info i,
 html.dark[data-site-palette="glass-blue"] .code-heading i,
 html.dark[data-site-palette="glass-blue"] .footer-link i {
+  color: var(--deep-accent-strong);
+}
+
+html.dark[data-site-palette="glass-blue"] .about-copy a {
   color: var(--deep-accent-strong);
 }
