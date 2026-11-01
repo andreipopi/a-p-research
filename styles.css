@@ -667,6 +667,10 @@ ul { margin: 0; padding-left: 18px; background: transparent;}
   margin-left: 2px;
 }
 
+.palette-picker[hidden] {
+  display: none;
+}
+
 .palette-options {
   position: absolute;
   bottom: calc(100% + 10px);

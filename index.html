@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en" data-site-palette="blue">
+<html lang="en" data-site-palette="glass-blue">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Andrei Popescu</title>
-  <link rel="stylesheet" href="styles.css?v=33" />
+  <link rel="stylesheet" href="styles.css?v=34" />
   <!-- Alternative palettes are enabled from the footer picker. -->
-  <link id="palette-theme-styles" rel="stylesheet" href="theme-deep.css?v=3" />
+  <link id="palette-theme-styles" rel="stylesheet" href="theme-deep.css?v=6" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,10 +26,10 @@
       const paletteToggle = document.getElementById('palette-toggle');
       const paletteOptions = document.getElementById('palette-options');
       const paletteThemeStyles = document.getElementById('palette-theme-styles');
-      const availablePalettes = ['default', 'deep', 'open', 'tropic', 'blue'];
+      const availablePalettes = ['default', 'deep', 'open', 'tropic', 'blue', 'glass-blue'];
 
       const applyPalette = function (palette, persist) {
-        const selectedPalette = availablePalettes.includes(palette) ? palette : 'blue';
+        const selectedPalette = availablePalettes.includes(palette) ? palette : 'glass-blue';
         root.dataset.sitePalette = selectedPalette;
 
         if (paletteThemeStyles) {
@@ -46,19 +46,19 @@
 
         if (persist) {
           try {
-            window.localStorage.setItem('site-palette-v4', selectedPalette);
+            window.localStorage.setItem('site-palette-v5', selectedPalette);
           } catch (error) {
             // The palette still works when browser storage is unavailable.
           }
         }
       };
 
-      let initialPalette = 'blue';
+      let initialPalette = 'glass-blue';
 
       try {
-        initialPalette = window.localStorage.getItem('site-palette-v4') || initialPalette;
+        initialPalette = window.localStorage.getItem('site-palette-v5') || initialPalette;
       } catch (error) {
-        // Use the blue palette when browser storage is unavailable.
+        // Use the Glass Blue palette when browser storage is unavailable.
       }
 
       applyPalette(initialPalette, false);
@@ -234,10 +234,16 @@
           <div class="about-copy">
             <h2>Bio</h2>
             <p>
-              I’m an AI researcher holding a PhD in Computer Science. My doctoral work focused on decomposition-based algorithms for exact reasoning in structured and probabilistic argumentation. My current work focuses on fine-tuning language models for exact reasoning tasks, including argumentative reasoning.
+              Hi, I’m Andrei 👋🏼. I work on formal reasoning and language models. I’m interested in algorithms that use problem structure to make hard reasoning tasks tractable.
             </p>
             <p>
-              My research background spans knowledge representation, formal reasoning, and algorithm design. I am now applying this experience to the fine-tuning and evaluation of language models on exact reasoning tasks.
+              During my PhD in Computer Science at TU Graz, I developed dynamic-programming algorithms over tree decompositions for exact reasoning in structured and probabilistic argumentation. These algorithms use treewidth as a structural parameter to make hard reasoning problems tractable on instances with bounded treewidth.
+            </p>
+            <p>
+              I now fine-tune open-weight language models for argumentative and probabilistic reasoning. I use symbolic solvers to build benchmarks and check model outputs against exact answers. I’m also interested in algorithms that use problem structure, search over candidate solutions at inference time, and train models with verifiable rewards.
+            </p>
+            <p>
+              Previously, I worked on reasoning systems for decentralized knowledge graphs, linked data, and ontology alignment at Ghent University, machine-learning methods for constraint solving at TU Graz, and an Android mixed-reality application for context-aware information delivery at Fraunhofer Italia.
             </p>
           </div>
         </div>
@@ -629,14 +635,16 @@
           <i class="ai ai-orcid" aria-hidden="true"></i>
           <span>ORCID</span>
         </a>
-        <div class="palette-picker" data-current-palette="blue">
+        <!-- Theme picker retained for later use. Remove `hidden` to reactivate it. -->
+        <div class="palette-picker" data-current-palette="glass-blue" hidden>
           <button class="palette-swatch palette-trigger" id="palette-toggle" type="button" aria-label="Choose color theme" aria-expanded="false" aria-controls="palette-options"></button>
           <div class="palette-options" id="palette-options" role="group" aria-label="Color theme" hidden>
             <button class="palette-swatch palette-swatch-default" type="button" data-palette="default" aria-label="Original site theme" title="Original theme" aria-pressed="false"></button>
             <button class="palette-swatch palette-swatch-deep" type="button" data-palette="deep" aria-label="Deep color theme" title="Deep" aria-pressed="false"></button>
             <button class="palette-swatch palette-swatch-open" type="button" data-palette="open" aria-label="Open color theme" title="Open" aria-pressed="false"></button>
             <button class="palette-swatch palette-swatch-tropic" type="button" data-palette="tropic" aria-label="Tropic color theme" title="Tropic" aria-pressed="false"></button>
-            <button class="palette-swatch palette-swatch-blue" type="button" data-palette="blue" aria-label="Original blue color theme" title="Original blue" aria-pressed="true"></button>
+            <button class="palette-swatch palette-swatch-blue" type="button" data-palette="blue" aria-label="Original blue color theme" title="Original blue" aria-pressed="false"></button>
+            <button class="palette-swatch palette-swatch-glass-blue" type="button" data-palette="glass-blue" aria-label="Glass blue color theme" title="Glass Blue" aria-pressed="true"></button>
           </div>
         </div>
       </div>
