@@ -4,13 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Andrei Popescu</title>
-  <link rel="stylesheet" href="styles.css?v=38" />
+  <link rel="stylesheet" href="styles.css?v=44" />
   <!-- Alternative palettes are enabled from the footer picker. -->
   <link id="palette-theme-styles" rel="stylesheet" href="theme-deep.css?v=7" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&amp;family=Petrona:wght@400;500;600&amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -197,12 +197,9 @@
     <div class="glass about-panel" id="home-panel" data-section-panel="home">
       <section class="sub">
         <div class="about-intro">
-          <div class="profile-media">
-            <div class="profile-photo">
-              <img src="andrei-popescu-profile.webp?v=4" alt="Andrei Popescu">
-            </div>
-
-            <ul class="info" aria-label="Contact and research profiles">
+          <div class="about-copy">
+            <h2>Bio</h2>
+            <ul class="info bio-links" aria-label="Contact and research profiles">
               <li>
                 <a href="mailto:andrei-popescu@outlook.com" aria-label="Email" title="Email">
                   <i class="fa-regular fa-envelope" aria-hidden="true"></i>
@@ -229,10 +226,6 @@
                 </a>
               </li>
             </ul>
-          </div>
-
-          <div class="about-copy">
-            <h2>Bio</h2>
             <p>
               Hi, I’m Andrei 👋🏼. I work on formal reasoning and language models. My research looks at how to solve hard reasoning problems efficiently and how to train and evaluate language models on tasks with exact, verifiable answers.
             </p>
@@ -246,6 +239,43 @@
               Previously, I worked on reasoning systems for decentralized knowledge graphs, linked data, and ontology alignment at <a href="https://www.ugent.be/en/" target="_blank" rel="noopener">Ghent University</a>, machine-learning methods for constraint solving at <a href="https://www.tugraz.at/en/home/" target="_blank" rel="noopener">TU Graz</a>, and an Android mixed-reality application for context-aware information delivery at <a href="https://www.fraunhofer.it/en.html" target="_blank" rel="noopener">Fraunhofer Italia</a>.
             </p>
           </div>
+
+          <!-- Archived photo-card layout. Its markup and styling are retained for a future restoration. -->
+          <template id="profile-photo-layout">
+            <div class="profile-media">
+              <div class="profile-photo">
+                <img src="andrei-popescu-profile.webp?v=4" alt="Andrei Popescu">
+              </div>
+
+              <ul class="info" aria-label="Contact and research profiles">
+                <li>
+                  <a href="mailto:andrei-popescu@outlook.com" aria-label="Email" title="Email">
+                    <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/andrei-popescu" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://dblp.org/pid/231/4051" target="_blank" rel="noopener" aria-label="DBLP" title="DBLP">
+                    <i class="ai ai-dblp" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/andreipopi" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://orcid.org/0000-0002-6601-5454" target="_blank" rel="noopener" aria-label="ORCID" title="ORCID">
+                    <i class="ai ai-orcid" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </template>
         </div>
 
         <div class="about-details">
